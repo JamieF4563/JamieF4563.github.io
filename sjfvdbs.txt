@@ -1,1 +1,0 @@
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCklpIZJXZhDvGSc3SYE7hhCJfgAV_mo1w&callback=initMap"
