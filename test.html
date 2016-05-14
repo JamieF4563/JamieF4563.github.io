@@ -4,19 +4,22 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
 </script>
 <script>
-var adress;
-var latLong = function(address) {
-  var adressLatLong = new google.maps.Geocoder();
-  adressLatLong.geocode( { 'address': address}, function(results, status) {
-
-  if (status == google.maps.GeocoderStatus.OK) {
-      var latitude = results[0].geometry.location.lat();
-      var longitude = results[0].geometry.location.lng();
-	  console.log(latitude,longitude);
+var a=nameadr.nameAd:Name; //recheck this line
+for(var i=0;a.length;i++){
+	var b=nameadr.nameAd:Adress;
+	var latLong = function(address) {
+		var adressLatLong = new google.maps.Geocoder();
+	  	adressLatLong.geocode( { 'address': address}, function(results, status) {
+	
+	  	if (status == google.maps.GeocoderStatus.OK) {
+	      		var latitude = results[0].geometry.location.lat();
+	      		var longitude = results[0].geometry.location.lng();
+		  	console.log(latitude,longitude);
+		}
+		}); 
 	}
-}); 
+	latLong(b);
 }
-latLong(adress);
 </script>
 </body>
 </html>
