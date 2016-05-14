@@ -4,10 +4,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC5kk1rkW-gaETWFmQIdezGQy2bhl_kruY">
 </script>
 <script>
-var nameadr={
-	Name:["Jamie"],
-	Adress:["1430 Street Road, Chester Springs, PA, 19425"]
-};
+
 var nameLatLng={
 	Name:[],
 	Lat:[],
@@ -16,13 +13,12 @@ var nameLatLng={
 var a=nameadr.Name;
 for(var i=0;a.length;i++){
 	var b=nameadr.Adress[i];
-	console.log(b);
 	var latLng = function(address) {
-		var adressLatLng = new google.maps.Geocoder();
-	  	adressLatLng.geocode( { 'address': address}, function(results, status) {
+		var mygeocoder = new google.maps.Geocoder();
+	  	mygeocoder.geocode( { 'address': address}, function(results, status) {
 	
 	  	if (status == google.maps.GeocoderStatus.OK) {
-	      	var latitude = results[0].geometry.location.lat();
+	      	var latitude = results[i].geometry.location.lat();
 			console.log(latitude);
 	      	var longitude = results[0].geometry.location.lng();
 			console.log(longitude);
@@ -33,10 +29,9 @@ for(var i=0;a.length;i++){
 		}); 
 	}
 	latLng(b);
-	console.log(nameLatLng.Name);
+
 }
-console.log(nameLatLng.Lat);
-console.log(nameLatLng.Lng);
+
 </script>
 </body>
 </html>
