@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html>
 <body>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC5kk1rkW-gaETWFmQIdezGQy2bhl_kruY">
 </script>
 <script>
-var locations=[];
-var a=nameadr.nameAd:Name; //recheck this line
+var nameadr={
+	Name:["Jamie"],
+	Adress:["1430 Street Road, Chester Springs, PA, 19425"]
+};
+var nameLatLng={
+	Name:[],
+	Lat:[],
+	Lng:[]
+};
+var a=nameadr.Name;
 for(var i=0;a.length;i++){
-	var b=nameadr.nameAd:Adress;
-	var latLong = function(address) {
-		var adressLatLong = new google.maps.Geocoder();
-	  	adressLatLong.geocode( { 'address': address}, function(results, status) {
+	var b=nameadr.Adress[i];
+	console.log(b);
+	var latLng = function(address) {
+		var adressLatLng = new google.maps.Geocoder();
+	  	adressLatLng.geocode( { 'address': address}, function(results, status) {
 	
 	  	if (status == google.maps.GeocoderStatus.OK) {
-	      		var latitude = results[0].geometry.location.lat();
-	      		var longitude = results[0].geometry.location.lng();
-	      		var arr=[latitude,longitude];
-		  	locations.push(arr);
+	      	var latitude = results[0].geometry.location.lat();
+			console.log(latitude);
+	      	var longitude = results[0].geometry.location.lng();
+			console.log(longitude);
+			nameLatLng.Name[i]=nameadr.Name[i];
+			nameLatLng.Lat[i]=latitude;
+			nameLatLng.Lng[i]=longitude;
 		}
 		}); 
 	}
-	latLong(b);
+	latLng(b);
+	console.log(nameLatLng.Name);
 }
+console.log(nameLatLng.Lat);
+console.log(nameLatLng.Lng);
 </script>
 </body>
 </html>
