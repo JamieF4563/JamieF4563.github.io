@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
+</script>
+<script>
+var adress;
+var latLong = function(address) {
+  var adressLatLong = new google.maps.Geocoder();
+  adressLatLong.geocode( { 'address': address}, function(results, status) {
+
+  if (status == google.maps.GeocoderStatus.OK) {
+      var latitude = results[0].geometry.location.lat();
+      var longitude = results[0].geometry.location.lng();
+	  console.log(latitude,longitude);
+	}
+}); 
+}
+latLong(adress);
+</script>
+</body>
+</html>
