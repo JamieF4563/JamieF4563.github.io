@@ -1,11 +1,13 @@
 //master js file 
 //important varaiables 
+
+
 var avgLng = 0;
 var avgLat = 0; 
 
 var nameadr = {
-	name: [].
-	adr:  []
+	name: ['nick','matt','billy'],
+	adr:  ['25 providence ct newtown pa','13 blayze court newtown pa','8025 fairview lane norristown pa']
 };
 
 var nameLatLng = {
@@ -18,7 +20,7 @@ var nameLatLng = {
 function adrToLatLng(){
 	for(i=0;i<=nameadr.name.length;i++){
 		var latLgn = function(address){
-		var myGeocoder = new.maps.Geocoder();
+		var myGeocoder = new google.maps.Geocoder();
 		myGeocoder.geocode({'address': address}, function(results, status) {
 			
 			if(status == google.maps.GeocoderStatus.OK) {
@@ -29,8 +31,9 @@ function adrToLatLng(){
 				nameLatLng.Lng[i]=longitude;
 				
 			}
-		}
+		})
 	}
+}
 }
 
 
@@ -86,32 +89,30 @@ function markerMaker(nameLatLng){
       fillOpacity: 0.35,
       map: map,
       center: {lat: avgLat,lng: avgLng
-	});
+	}
 	
+})
 }
 
 function cleanSlateProtocol (){
 	findAvgLat();
 	findAvgLng();
-	while(avgLat = 0  || avgLng = 0){
+	while(avgLat == 0  || avgLng == 0){
 		continue;
 	}
-	initMap();
+	initMap()
 	markerMaker();
 }
 	
 
 
 function initMap(){
+	
 	var mapDiv = document.getElementById('map');
 	var mapOptions = {
-		zoom = 8,
-		center = {lat: avgLat, lng: avgLng};
+		zoom: 4,
+		center: ({lat: 10.0, lng: 10.0})
 	}
 	
 	var map = new google.maps.Map(mapDiv, mapOptions);
-	
-	
 }
-
-
