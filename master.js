@@ -11,9 +11,9 @@ var nameadr = {
 };
 
 var nameLatLng = {
-	name: [],
-	lat: [],
-	lng: []
+	name: ['nick','matt','billy'],
+	lat: ['40.6533524'],
+	lng: ['70.123']
 	
 }
 
@@ -101,7 +101,8 @@ function cleanSlateProtocol (){
 		continue;
 	}
 	initMap()
-	markerMaker();
+	markerMaker(nameadr);
+	
 }
 	
 
