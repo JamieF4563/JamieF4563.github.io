@@ -4,21 +4,14 @@
 
 var avgLng = 0;
 var avgLat = 0; 
-
-var nameadr = {
-	name: ['nick','matt','billy'],
-	adr:  ['25 providence ct newtown pa','13 blayze court newtown pa','8025 fairview lane norristown pa']
-};
-
+var nameAdr=document.getElementById("nameadr");
 var nameLatLng = {
-	name: ['nick','matt','billy'],
-	lat: ['40.6533524'],
-	lng: ['70.123']
-	
+	name: [],
+	lat: [],
+	lng: []
 }
-
 function adrToLatLng(){
-	for(i=0;i<=nameadr.name.length;i++){
+	for(i=0;i<=nameAdr.name.length;i++){
 		var latLgn = function(address){
 		var myGeocoder = new google.maps.Geocoder();
 		myGeocoder.geocode({'address': address}, function(results, status) {
@@ -26,56 +19,49 @@ function adrToLatLng(){
 			if(status == google.maps.GeocoderStatus.OK) {
 				var latitude = results[i].geometry.location.lat();
 				var longitude = results[i].geometry.location.lng();
-				nameLatLng.name[i]= nameadr.name[i];
+				nameLatLng.name[i]= nameAdr.name[i];
 				nameLatLng.lat[i]=latitude;
 				nameLatLng.Lng[i]=longitude;
-				
 			}
 		})
 	}
 }
 }
 
-
-
-
-
 function findAvgLat() {
-		var length = nameadr.length;
+		var length = nameAdr.length;
 		var total = 0;
 		var avg;
 		var x = 0;
 		while ( x + 1 <= length) {
-		total += nameadr[x];
-		x++
+		total += nameAdr[x];
+		x++;
 		}
 		avgLat = total / length;
 	}
+	
 function findAvgLng () {
-		var length = nameadr.length;
+		var length = nameAdr.length;
 		var total = 0;
 		var avg;
 		var x = 0;
 		while ( x + 1 <= length) {
-		total += nameadr[x];
-		x++
+		total += nameAdr[x];
+		x++;
 		}
 		avgLng = total / length;
 	}
 
-
-
 function markerMaker(nameLatLng){
-	var numOfMakers = nameLatLng.name.length;
-	for (i = 0; i<=numOfMarkers; i++){
-		
-		markersLoc.push({lat:namLatLng.lat[i], lng:nameLatLng.lng[i]})
-		title.push(makersLoc.name[i])
-	}
+	var numOfMarkers = nameLatLng.name.length;
 	var markersLoc = [];
 	var title = [];
+	for (i = 0; i<=numOfMarkers; i++){
+		markersLoc.push({lat:namLatLng.lat[i], lng:nameLatLng.lng[i]});
+		title.push(markersLoc.name[i]);
+	}
 	
-	for(i=l; i<=numOfMakers; i++){
+	for(i=l; i<=numOfMarkers; i++){
 		marker = new google.maps.Marker({
 			position: markersLoc[i],
 			title: title[i]
@@ -94,19 +80,6 @@ function markerMaker(nameLatLng){
 })
 }
 
-function cleanSlateProtocol (){
-	findAvgLat();
-	findAvgLng();
-	while(avgLat == 0  || avgLng == 0){
-		continue;
-	}
-	initMap()
-	markerMaker(nameadr);
-	
-}
-	
-
-
 function initMap(){
 	
 	var mapDiv = document.getElementById('map');
@@ -116,4 +89,14 @@ function initMap(){
 	}
 	
 	var map = new google.maps.Map(mapDiv, mapOptions);
+}
+
+function cleanSlateProtocol (){
+	findAvgLat();
+	findAvgLng();
+	while(avgLat == 0  || avgLng == 0){
+		continue;
+	}
+	initMap()
+	markerMaker(nameAdr);
 }
