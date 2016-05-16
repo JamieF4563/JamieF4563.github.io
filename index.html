@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-US">
+<head>
+		<title>User Input</title> 
+	</head>
+	
+	<body>
 
+
+		Name:   <input type="text" name="Name" id="nameInput" value="Enter in Name"><br>
+		Address: <input type="text" name="Address" id="addressInput" value="Enter in Address"><br>
+		
+		
+		<button "add" type = "submit" value = "addd" name = "addition" id = "additio" onclick = addFunc();>Add</button><br>	
+		<button type = "submit" form = "namadr" value = "complete" onclick="alert(nameadr);">Complete</button><br>
+				
+
+	<script id = nameadr>
+	
+			var nameadr = {
+				name: [],
+				adr: []};
+			function addFunc(){
+				nameadr.name.push(document.getElementById("nameInput").value)
+				nameadr.adr.push(document.getElementById("addressInput").value)
+			}
+			document.getElementById("additio").onclick = addFunc;
+	
+	</script> 
+
+<p>Click the "Add" button and the people will be added.</p>
+
+	</body> 
 	<head>
 		<title>Name Pending</title>
 		<link rel="shortcut icon" href="favicon.ico?" />
@@ -9,7 +39,6 @@
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
 		<src="https://maps.googleapis.com/maps/api/js?Key=AIzaSyC3y2BPDTuWCGdOBM7t2S7CV-u9_ZDqNlg"
         async defer>
-		<script src="GFS.html"></script>
 		<script src="master.js"></script>
 		
 	</head>
