@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<html>
+		<h1>X</h1>
+		<input type="number" id="X" value="0"><br>
+		<button id="SubmitX" onclick="graph">Graph></button><br>
+		<canvas id="Graph" onclick="zoom" width="500px" height="500px"></canvas>
+		<script>
+			var c=document.getElementById("Graph");
+			var ctx=c.getContext("2d");
+			var s=1;
+			var w=c.width;
+			var h=c.height;
+			var hw=w/2;
+			var hh=h/2;
+			ctx.translate(c.width/2,c.height/2);
+			function graph(){
+				ctx.beginPath();
+					ctx.fillStyle="0";
+					ctx.fillRect(-1*hw,0,w,1);
+					ctx.fillRect(0,-1*hh,1,h);
+					ctx.fill();
+				ctx.closePath();
+				for(var i=-1*hw;i<hw;i+=1/s){
+					ctx.point(i,);
+					ctx.point(i,i);
+				}
+			}
+			function zoom(){
+				var cx=c.clientX;
+				var cy=c.clientY;
+				ctx.translate(cx,cy);
+				s=s*2;
+				ctx.scale(s);
+				ctx.translate(-1*cx,-1*cy);
+				graph();
+			}
+		</script>
+	</html>
